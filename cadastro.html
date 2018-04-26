@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Compartilhe Vida V3</title>
+
+    <meta charset="UTF-8">
+
+  	<link rel="icon" href="imagens/gotinha.png" type="image/x-icon" /> <!-- icon -->
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link type="text/css" href="style.css" rel="stylesheet" /> <!-- importa css -->
+  	<link href="https://fonts.googleapis.com/css?family=Cabin|Lobster|Ubuntu" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet"> <!-- importa fontes -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><!-- importa bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script> <!-- importa jquerry -->
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top"><!-- navbar  -->
+    	  <div class="container-fluid">
+
+    			<div class="navbar-header">
+    			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    			  </button>
+    			</div>
+
+    			<div class="collapse navbar-collapse" id="myNavbar">
+    			  <ul class="nav navbar-nav">
+    				<li><a href="index.html">Início</a></li>
+    				<li><a href="cadastro.html">Cadastrar</a></li>
+    				<li><a href="entra.html">Entrar</a></li>
+    			  </ul>
+    			</div>
+
+    		</div>
+    	</nav>
+    <!-- fim navbar -->
+
+	<div class="container-fluid">
+	  <div class="row branquinho">
+			<h2>CADASTRO</h2>
+			<div class="form-group entrada">
+			  <label for="nome">Nome:</label>
+				<input type="text" class="form-control" id="nome" placeholder="Fulano de Tal">
+
+				<div>
+					<label for="seldia">Data de Nascimento:</label>
+					<input class="form-control input-sm" id="inputsm" type="date">
+				</div>
+
+				<div>
+					<label for="sexo">Selecione o sexo:</label>
+					<label class="radio-inline"><input type="radio" name="sexo">Feminino</label>
+					<label class="radio-inline"><input type="radio" name="sexo">Masculino</label><br>
+				</div>
+
+				<label for="email">E-mail:</label>
+				<input type="text" class="form-control" id="email" placeholder="fulanodetal@email.com.br">
+
+				<label for="senha">Senha:</label>
+				<input type="password" class="form-control" id="senha" placeholder="senha">
+
+				<label for="senha">Confirme senha:</label>
+				<input type="password" class="form-control" id="senha" placeholder="senha">
+
+				<label for="cel">Celular:</label>
+				<input type="text" class="form-control" id="cel" placeholder="(27) 99999-9999">
+
+				<label for="selcid">Cidade:</label>
+					<select class="form-control" id="selcid">
+						<option value="vix">Vitória</option>
+						<option value="ser">Serra</option>
+						<option value="vv">Vila Velha</option>
+					</select>
+
+				<label for="celest">Estado:</label>
+					<select class="form-control" id="selest">
+						<option value="vix">ES</option>
+						<option value="ser">RJ</option>
+						<option value="vv">SP</option>
+					</select>
+
+				<label for="tsangue">Tipo Sanguíneo:</label>
+					<select class="form-control" id="tsangue">
+						<option value="Amenos">A-</option>
+						<option value="Bmenos">B-</option>
+						<option value="ABmais">AB+</option>
+						<option value="ABmenos">AB-</option>
+						<option value="Omais">O+</option>
+						<option value="Omenos">O-</option>
+					</select>
+
+				<label for="doac">Deseja Doar Medula Óssea?</label>
+				<label class="radio-inline"><input type="radio" name="doac" value="Sim">Sim</label>
+				<label class="radio-inline"><input type="radio" name="doac" value="Não">Não</label><br>
+
+				<label for="hemoes">Onde você pode doar?</label>
+					<select class="form-control" id="hemoes">
+						<option value="vix">Vitória</option>
+						<option value="ser">Serra</option>
+						<option value="vv">Vila Velha</option>
+					</select>
+
+				<br>
+				<center><a href="#"><button id="btnFecha" class="banner-button banner-button-animation"><span>CRIAR CONTA</span></button></a></center>
+			</div>
+	  </div>
+	  <!-- rodapé  -->
+	  <div class="row">
+			<div class="col-sm-12 rodape text-center">
+				<img src="imagens/maozinea.png" class="img-responsive">
+				<h1>Compartilhe vida</h1><br>
+				<p>Alguma nota de rodapé que não faço ideia de como escrever</p><br>
+				<p>Compartilhe Vida © 2017 | Diretos Reservados</p>
+			</div>
+	  </div>
+	  <!-- fim rodapé  -->
+	</div>
+   <!-- fim container  -->
+
+
+</body>
+
+</html>
