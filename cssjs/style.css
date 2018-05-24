@@ -1,0 +1,245 @@
+/* CSS Document */
+
+body {
+	background-image:url('../imagens/bkg2.jpg');
+	height: 100%;
+	margin: 0 0;
+	font-family: 'Cabin', sans-serif;
+	font-size:15px;
+	}
+
+body  h1{
+	font-family: 'Lobster', cursive;
+	}
+body  a{
+	color:#000;
+	}
+body  a li{
+	color:#000;
+	font-style:bold;
+	}
+
+p{
+	text-align: justify;
+}
+
+.navbar {
+margin-bottom: 0;
+      border-radius: 0;
+	  background-color:#DF0005;
+	  color:#000;
+	  font-family: 'Ubuntu', sans-serif;
+    margin-bottom: 0;
+    z-index: 9999;
+    border: 0;
+    font-size: 13px !important;
+    line-height: 1.42857143 !important;
+	text-transform:uppercase;
+}
+
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #000 !important;
+    background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+
+.selecao{
+	background-color:#cfcfcf;
+	}
+
+    button {
+      margin: 10px;
+    }
+    .banner-button {
+      font-family:  Ubuntu;
+      font-size: 14px;
+      font-weight: 400;
+      position: relative;
+      z-index: 3;
+      padding: 15px 30px 15px 30px;
+      margin: auto auto 1%;
+      background: transparent;
+      outline: none !important;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-block;
+    }
+    .banner-button-animation {
+      width: 150px;
+      height: 40px;
+      line-height: 42px;
+      padding: 0;
+      border: none;
+    }
+    .banner-button-animation span {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .banner-button-animation:before, .banner-button-animation:after {
+      position: absolute;
+      content: "";
+      height: 0%;
+      width: 2px;
+      background: #000;
+    }
+    .banner-button-animation:before {
+      right: 0;
+      top: 0;
+      transition: all 0.1s ease;
+    }
+    .banner-button-animation:after {
+      left: 0;
+      bottom: 0;
+      transition: all 0.1s 0.2s ease;
+    }
+    .banner-button-animation:hover:before {
+      transition: all 0.1s 0.2s ease;
+      height: 100%;
+    }
+    .banner-button-animation:hover:after {
+      transition: all 0.1s ease;
+      height: 100%;
+    }
+    .banner-button-animation span:before, .banner-button-animation span:after {
+      position: absolute;
+      content: "";
+      background: #000;
+    }
+    .banner-button-animation span:before {
+      left: 0;
+      top: 0;
+      width: 0%;
+      height: 2px;
+      transition: all 0.1s 0.1s ease;
+    }
+    .banner-button-animation span:after {
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+    }
+    .banner-button-animation span:hover:before {width: 100%;}
+	.seta-direita:before {
+	  content: "";
+	  display: inline-block;
+	  vertical-align: middle;
+	  margin-right: 10px;
+	  width: 0;
+	  height: 0;
+
+	  border-top: 15px solid transparent;
+	  border-bottom: 15px solid transparent;
+	  border-left: 15px solid green;
+	}
+
+.header{
+	margin-top:80px;
+}
+
+.geral{
+	min-height:100%;
+    position:relative;
+}
+
+.info {
+	background-color:#fff;
+	margin-top:30px;
+	padding:15px;
+}
+.caixa{
+	padding:20px;
+	margin-top:50px;
+}
+.caixa img{
+	height:150px;
+}
+
+.maisd{
+	padding:20px;
+	background-color: #fff;
+}
+
+.maisp{
+	padding:20px;
+	background-color: #fff;
+}
+
+.az{
+	background-color: #6769c9;
+	padding:5px;
+}
+.rx{
+	background-color: #b6528c;
+}
+
+.rodape{
+	background-color:#000;
+	color:#fff;
+	padding: 15px 60px;
+    bottom:0;
+	}
+ .rodape img{
+	display: inline;
+	margin-right:20px;
+	margin-bottom: 10px;
+	}
+ .rodape h1{
+	display: inline;
+	font-family:'Julius Sans One', sans-serif;
+	}
+ .rodape p{
+	display: inline;
+	}
+
+/* entra.html */
+.bg{
+	height: 100%;
+	margin-top:95px;
+	padding:5%;
+}
+
+.logoin{
+	height:150px;
+}
+
+.ajrodape{
+	position: absolute;
+	bottom: 0;
+
+}
+
+.ajconteudo {
+   
+    width:800px;
+}
+
+.branquinho{
+	margin: 0 14% 0 14%;
+	background-color: #fff;
+	padding: 8% 7% 2% 7%;
+	 min-height:: 100%;
+}
+
+.branquinho2{
+	margin: 0 14% 0 14%;
+	background-color: #fff;
+	padding: 8% 7% 2% 7%;
+	min-height:100%;
+    position:relative;
+}
+
+.entrada label{
+	margin: 3% 0 0.5% 0.5%;
+	vertical-align: inherit;
+}
