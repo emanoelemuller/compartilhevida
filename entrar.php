@@ -1,5 +1,6 @@
 <?php
 
+/* Confere no BD se o usuário existe e entra para página usuário */
 
 require_once("ConnectionFactory.php");
 

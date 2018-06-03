@@ -99,7 +99,8 @@
 									<h1><?php echo $row['nomePaciente'] ;?></h1>
 									<p id="feedLetrinha">· Pedido realizado em <?php echo $row['dataPedido'] ;?> <span>· para [LOCALPEDIDO]</span> <span>· Precisa de <?php echo $row['qntDoacao'] ;?> Litros</span></p>
 									<p><?php echo $row['comentario'] ;?></p>
-									<a href="#"><input class='feedBotao' type='button' value='Atender Pedido'></a>
+									<?php $_SESSION['codDoacao'] = $row['codDoacao'] ;?>
+									<a href="atenderpedido.php"><input class='feedBotao' type='button' value='Atender Pedido'></a>
 						</div>
 					</div>
 				<?php endwhile ?>
