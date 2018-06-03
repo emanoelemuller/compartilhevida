@@ -17,7 +17,8 @@ try {
 		session_start();
 		$_SESSION['emailUsuario'] = $result['emailUsuario'];
 		$_SESSION['senhaUsuario'] = $result['senhaUsuario'];
-		header('location: user.html');
+		$_SESSION['codUsuario'] = $result['codUsuario'];	
+		header('location: cadastropedido.php');
 	} else {
 		echo "
 			Usuario invalido... 

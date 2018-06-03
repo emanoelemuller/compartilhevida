@@ -28,6 +28,6 @@ try {
 
 mysqli_close($conn);
 
-header("location: entra.html");
+header("location: entra.php");
 
 ?>	

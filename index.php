@@ -48,7 +48,7 @@
 
     		<!-- header -->
     		<div class="row header">
-    		  <div class="col-12">
+    		  <div class="col-sm-12">
     			  <center><img src="imagens/logctexto.png" class="img-responsive"></center>
     		  </div>
     		</div> <!-- fim header -->
