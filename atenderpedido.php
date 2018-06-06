@@ -9,7 +9,7 @@ require_once("ConnectionFactory.php");
 $sql = "INSERT INTO atendecria(tipo,fk_codUsuario,fk_codDoacao) VALUES (
 	'2',
 	'" . $_SESSION['codUsuario'] . "',
-	'" . $_SESSION['codDoacao'] . "'	
+	'" . $_POST['codDoa'] . "'	
 )";
 
 try {

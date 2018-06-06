@@ -51,11 +51,11 @@
 		  
 			<div class="form-group entrada">
 			  <label for="nome">Nome:</label>
-				<input type="text" class="form-control" id="nome" placeholder="Fulano de Tal" name="nome">
+				<input type="text" class="form-control" id="nome" placeholder="Fulano de Tal" name="nome" required>
 
 				<div>
-					<label for="seldia">Data de Nascimento:</label>
-					<input class="form-control input-sm" id="inputsm" type="date" name="datan">
+					<label for="datan">Data de Nascimento:</label>
+					<input class="form-control input-sm" id="datan" type="date" name="datan" required>
 				</div>
 
 				<div>
@@ -65,18 +65,19 @@
 				</div>
 
 				<label for="email">E-mail:</label>
-				<input type="text" class="form-control" id="email" placeholder="fulanodetal@email.com.br" name="email">
+				<input type="text" class="form-control" id="email" placeholder="fulanodetal@email.com.br" name="email" required>
 
 				<label for="senha">Senha:</label>
-				<input type="password" class="form-control" id="senha" placeholder="senha" name="senha">
-
+				<input type="password" class="form-control" id="senha" placeholder="senha" name="senha" required>
+				<label for="csenha">Confime senha:</label>
+				<input type="password" class="form-control" id="csenha" placeholder="confirme senha" name="csenha" required>
 
 				<label for="cel">Celular:</label>
 				<input type="text" class="form-control" id="cel" placeholder="(27) 99999-9999" name="cel">
 
 
 				<label for="tsangue">Tipo Sanguíneo:</label>
-					<select class="form-control" id="tsangue" name="tipos">
+					<select class="form-control" id="tsangue" name="tipos" required>
 						<option value="1" name="tipos">A+</option>
 						<option value="2" name="tipos">A-</option>
 						<option value="3" name="tipos">B+</option>

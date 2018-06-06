@@ -1,9 +1,10 @@
 <?php
-
+	session_start(); 
 	require_once("ConnectionFactory.php");
 
 	//Tipo sagnuíneo do usuário
-	//???
+	// $sangue = $_SESSION['fk_codSangue'];
+	$sangue = $_SESSION['fk_codSangue'];
 
 	//Verifica e atribui a página
 	$pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
@@ -15,14 +16,14 @@
 	$inicio = ($limite * $pagina) - $limite;
 
 	//Seleciona dados da tabela
-	$sql = "SELECT * FROM pedido LIMIT $inicio, $limite";
+	$sql = "SELECT * FROM pedido WHERE fk_codSangue=$sangue LIMIT $inicio, $limite";
 	$result = mysqli_query($conn, $sql);
 
 	//Filtra os dados por meio do TIPO SANGUÍNEO do USUÁRIO
 	//???
 
 	//Contador de dados na tabela
-	$resultpg = "SELECT COUNT(codDoacao) AS numPg FROM pedido";
+	$resultpg = "SELECT COUNT(codDoacao) AS numPg FROM pedido WHERE fk_codSangue=$sangue";
 	$resultPg = mysqli_query($conn, $resultpg);
 	$cont = mysqli_fetch_assoc($resultPg);
 
@@ -86,33 +87,56 @@
 		 <!--TESTEFEED-->
 
 			<div id="feedSubtitulo" class="entrada">
-			  Mostrando pedidos pendentes compatíveis com o <b style="color:#ff2c32">seu</b> tipo sanguíneo
+				<!-- Total de resultados (apenas mostra) -->
+				Mostrando <b style="color:#ff2c32"><?php echo "$cont[numPg]" ?><?php ?></b> pedidos pendentes compatíveis com o <b style="color:#ff2c32">seu</b> tipo sanguíneo
 			</div>
 
 			<br><br>
+
 
 			<?php if ($result->num_rows > 0) :?>
 				<?php while($row = $result->fetch_assoc()) :?>
 					<div class="row feedBorda">
 						<div class="col-sm-12 feed">
+
+							<p id="feedCod">#<?php $_SESSION['codDoa'] = $row['codDoacao']; echo $_SESSION['codDoa'] ;?></p>
 							<img src="imagens/Hands/RED_Hand.png" class="img-responsive handFeed">
 									<h1><?php echo $row['nomePaciente'] ;?></h1>
-									<p id="feedLetrinha">· Pedido realizado em <?php echo $row['dataPedido'] ;?> <span>· para [LOCALPEDIDO]</span> <span>· Precisa de <?php echo $row['qntDoacao'] ;?> Litros</span></p>
+									<p id="feedLetrinha">· Pedido realizado em <b><?php echo $row['dataPedido'] ;?></b><span> · Precisa de <b><?php echo $row['qntDoacao'] ;?></b> Litros</span><span> · para <b><?php echo $row['localPedido'] ;?></b></span></p>
 									<p><?php echo $row['comentario'] ;?></p>
-									<?php $_SESSION['codDoacao'] = $row['codDoacao'] ;?>
-									<a href="atenderpedido.php"><input class='feedBotao' type='button' value='Atender Pedido'></a>
+									<form method="post" action="atenderpedido.php">
+										<input type="hidden" name="codDoa" value=<?php echo $row["codDoacao"]; ?>>
+										<button id="funciona" class="feedBotao" type="submit"><span>AJUDAR</span></button>
+
+									</form>
 						</div>
 					</div>
 				<?php endwhile ?>
 			<?php endif ?>
 
-			<?php if($anterior >= 1) :?>
-				<a href="<?php echo "feed.php?pagina=$anterior" ?>"><input class='botaoSeta' type='button' value='<'></a>
-			<?php endif ?>
+			<div class="feedPagination">
 
-			<?php if($proxima <= $qtdtotal) :?>
-				<a href="<?php echo "feed.php?pagina=$proxima" ?>"><input class='botaoSeta' type='button' value='>'></a>
-			<?php endif ?>
+				<?php if($qtdtotal > 0) :?>
+					<!-- Botão página anterior -->
+					<?php if($anterior >= 1) :?>
+						<a href="<?php echo "feed.php?pagina=$anterior" ?>"><input class='botaoSeta' type='button' value='<'></a>
+					<?php endif ?>
+
+					<!-- Página atual e total de páginas (apenas mostra) -->
+					<?php ?>
+						<span><?php echo "$pagina" ?>
+						<?php if($qtdtotal > 1) :?>
+							<?php echo "/ $qtdtotal" ;?>
+						<?php endif ?></span>
+					<?php ?>
+
+					<!-- Botão próxima página -->
+					<?php if($proxima <= $qtdtotal) :?>
+						<a href="<?php echo "feed.php?pagina=$proxima" ?>"><input class='botaoSeta' type='button' value='>'></a>
+					<?php endif ?>
+				<?php endif ?>
+
+			</div>
 
 			<!-- <div id="feedSubtitulo" class="entrada">
 			  Mostrando pedido pendentes compatíveis com o <b style="color:#ff2c32">seu</b> tipo sanguíneo
@@ -136,6 +160,7 @@
 	  <!-- rodapé  -->
 	  <div class="row">
 			<div class="col-sm-12 rodape text-center">
+				<a href="cadastropedido.php"><input class='botaoCadastro' type='button' value='Criar pedido'></a>
 				<img src="imagens/maozinea.png" class="img-responsive">
 				<h1>Compartilhe vida</h1><br>
 				<p>Alguma nota de rodapé que não faço ideia de como escrever</p><br>

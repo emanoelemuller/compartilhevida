@@ -1,4 +1,14 @@
-<?php require_once("ConnectionFactory.php"); ?>
+<?php 
+	session_start(); 
+
+	require_once("ConnectionFactory.php"); 
+
+$sql = ("SELECT * FROM usuario WHERE (codUsuario='".$_SESSION['codUsuario']."')");
+    $result = mysqli_query($conn, $sql);
+    $res = $result->fetch_assoc();
+
+
+?>
 
 <!doctype html>
 <html>
@@ -46,42 +56,33 @@
 
 	<div class="container-fluid">
 	  <div class="row branquinho">
-		 <h2>CADASTRO DE PEDIDO</h2>
-		  <form method="post" action="cadastrarpedido.php">
+		 <h2>ALTERAR CADASTRO</h2>
+		  <form method="post" action="altcadastrar.php">
 		  
 			<div class="form-group entrada">
-			  <label for="nome">Nome Paciente:</label>
-				<input type="text" class="form-control" id="nome" placeholder="Fulano de Tal" name="nome">
+			  <label for="nome">Nome:</label>
+				<input type="text" class="form-control" id="nome" placeholder="Fulano de Tal" name="nome" value="<?php echo $res['nome'] ?>" required>
+
 				<div>
-					<label for="causa">Causa:</label>
-					<input type="text" class="form-control" id="causa" placeholder="Cirurgia" name="causa">
+					<label for="datan">Data de Nascimento:</label>
+					<input class="form-control input-sm" id="datan" type="date" name="datan" value="<?php echo $res['dataNasc'] ?>"required>
 				</div>
 
-				<label for="tsangue">Tipo Sanguíneo:</label>
-					<select class="form-control" id="tsangue" name="tipos">
-						<option value="1" name="tipos">A+</option>
-						<option value="2" name="tipos">A-</option>
-						<option value="3" name="tipos">B+</option>
-						<option value="4" name="tipos">B-</option>
-						<option value="5" name="tipos">AB+</option>
-						<option value="6" name="tipos">AB-</option>
-						<option value="7" name="tipos">O+</option>
-						<option value="8" name="tipos">O-</option>
-					</select>
+				<label for="cel">Celular:</label>
+				<input type="text" class="form-control" id="cel" placeholder="(27) 99999-9999" name="cel"value="<?php echo $res['telUsuario'] ?>">
 
-				<label for="qntdoa">Quantidade de Sangue:</label>
-				<input type="text" class="form-control" id="qntdoa" placeholder="Quantidade necessaria de doações" name="qntdoa">
+				<label for="email">E-mail:</label>
+				<input type="text" class="form-control" id="email" placeholder="fulanodetal@email.com.br" name="email" value="<?php echo $res['emailUsuario'] ?>"required>
 
-				<label for="localdoa">Local de Doação:</label>
-				<input type="text" class="form-control" id="localdoa" placeholder="Santa Rita" name="localdoa">
+				<label for="senha">Senha antiga:</label>
+				<input type="password" class="form-control" id="senha" placeholder="senha" name="senha" required>
+				<label for="csenha">Nova senha:</label>
+				<input type="password" class="form-control" id="csenha" placeholder="Ou repita senha" name="csenha" required>
 
-				<label for="comen">Comentário:</label>
-				<input type="text" class="form-control" id="comen" placeholder="Comentários" name="comen">
+				<input type="hidden" name="asenha" value="<?php echo $res['senhaUsuario']; ?>">
 
-				<!--<textarea class="form-control" rows="5" id="comen" name="comen"></textarea>-->
+				<center><a href="#"><button id="btnFecha" class="banner-button banner-button-animation" type="submit"><span>ALTERAR DADOS</span></button></a></center>
 
-				<center><a href="#"><button id="btnFecha" class="banner-button banner-button-animation" type="submit"><span>CRIAR PEDIDO</span></button></a></center>
-		</form>
 				
 			</div>
 		

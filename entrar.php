@@ -18,8 +18,9 @@ try {
 		session_start();
 		$_SESSION['emailUsuario'] = $result['emailUsuario'];
 		$_SESSION['senhaUsuario'] = $result['senhaUsuario'];
-		$_SESSION['codUsuario'] = $result['codUsuario'];	
-		header('location: cadastropedido.php');
+		$_SESSION['codUsuario'] = $result['codUsuario'];
+		$_SESSION['fk_codSangue'] = $result['fk_codSangue'];		
+		header('location: altcadastro.php');
 	} else {
 		echo "
 			Usuario invalido... 
