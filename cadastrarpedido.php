@@ -20,10 +20,11 @@ if(mysqli_query($conn,$sql)){
 		$last_id = mysqli_insert_id($conn);
 	}
 
-$sql = "INSERT INTO atendecria(tipo,fk_codUsuario,fk_codDoacao) VALUES (
+$sql = "INSERT INTO atendecria(tipo,fk_codUsuario,fk_codDoacao,data) VALUES (
 	'1',
 	'" . $_SESSION['codUsuario'] . "',
-	'.$last_id.'	
+	'.$last_id.',
+	CURDATE()
 )";
 
 try {

@@ -16,14 +16,52 @@
 	$inicio = ($limite * $pagina) - $limite;
 
 	//Seleciona dados da tabela
-	$sql = "SELECT * FROM pedido WHERE fk_codSangue=$sangue LIMIT $inicio, $limite";
+	if($sangue=='1'){
+		$sql = "SELECT * FROM pedido WHERE (fk_codSangue='1' or fk_codSangue='5') LIMIT $inicio, $limite";
+		//Contador de dados na tabela
+		$resultpg = "SELECT COUNT(codDoacao) AS numPg FROM pedido WHERE (fk_codSangue='1' or fk_codSangue='5')";
+	} elseif ($sangue=='2'){
+		$sql = "SELECT * FROM pedido WHERE (fk_codSangue='1' or fk_codSangue='5' or fk_codSangue='2' or fk_codSangue='6')  LIMIT $inicio, $limite";
+		//Contador de dados na tabela
+		$resultpg = "SELECT COUNT(codDoacao) AS numPg FROM pedido WHERE (fk_codSangue='1' or fk_codSangue='5' or fk_codSangue='2' or fk_codSangue='6')";
+	} elseif ($sangue=='3'){
+		$sql = "SELECT * FROM pedido WHERE (fk_codSangue='2' or fk_codSangue='5')  LIMIT $inicio, $limite";
+		//Contador de dados na tabela
+		$resultpg = "SELECT COUNT(codDoacao) AS numPg FROM pedido WHERE (fk_codSangue='2' or fk_codSangue='5')";
+	} elseif ($sangue=='4'){
+		$sql = "SELECT * FROM pedido WHERE (fk_codSangue='3' or fk_codSangue='5' or fk_codSangue='2' or fk_codSangue='6')  LIMIT $inicio, $limite";
+		//Contador de dados na tabela
+		$resultpg = "SELECT COUNT(codDoacao) AS numPg FROM pedido WHERE (fk_codSangue='3' or fk_codSangue='5' or fk_codSangue='2' or fk_codSangue='6')";
+	} elseif ($sangue=='5'){
+		$sql = "SELECT * FROM pedido WHERE fk_codSangue='5'  LIMIT $inicio, $limite";
+		//Contador de dados na tabela
+		$resultpg = "SELECT COUNT(codDoacao) AS numPg FROM pedido WHERE fk_codSangue='5'";
+	} elseif ($sangue=='6'){
+		$sql = "SELECT * FROM pedido WHERE (fk_codSangue='5' or fk_codSangue=='6')  LIMIT $inicio, $limite";
+		//Contador de dados na tabela
+		$resultpg = "SELECT COUNT(codDoacao) AS numPg FROM pedido WHERE (fk_codSangue='5' or fk_codSangue=='6')";
+	} elseif ($sangue=='7'){
+		$sql = "SELECT * FROM pedido WHERE (fk_codSangue='1' or fk_codSangue='5' or fk_codSangue='3' or fk_codSangue='7')  LIMIT $inicio, $limite";
+		//Contador de dados na tabela
+		$resultpg = "SELECT COUNT(codDoacao) AS numPg FROM pedido WHERE (fk_codSangue='1' or fk_codSangue='5' or fk_codSangue='3' or fk_codSangue='7')";
+	} else{
+		$sql = "SELECT * FROM pedido LIMIT $inicio, $limite";
+		//Contador de dados na tabela
+		$resultpg = "SELECT COUNT(codDoacao) AS numPg FROM pedido";
+		echo $sql;
+	}
+
+	
 	$result = mysqli_query($conn, $sql);
+
+	//Seleciona dados da tabela
+	// $sql = "SELECT * FROM pedido WHERE fk_codSangue=$sangue LIMIT $inicio, $limite";
+	// $result = mysqli_query($conn, $sql);
 
 	//Filtra os dados por meio do TIPO SANGUÍNEO do USUÁRIO
 	//???
 
-	//Contador de dados na tabela
-	$resultpg = "SELECT COUNT(codDoacao) AS numPg FROM pedido WHERE fk_codSangue=$sangue";
+	//Contar
 	$resultPg = mysqli_query($conn, $resultpg);
 	$cont = mysqli_fetch_assoc($resultPg);
 
@@ -68,11 +106,14 @@
     			</div>
 
     			<div class="collapse navbar-collapse" id="myNavbar">
-    			  <ul class="nav navbar-nav">
-    				<li><a href="index.php">Início</a></li>
-    				<li><a href="cadastro.php">Cadastrar</a></li>
-    				<li><a href="entra.php">Entrar</a></li>
-    			  </ul>
+    			  	 <ul class="nav navbar-nav">
+	    				<li><a href="user.php">Perfil</a></li>
+	    				<li><a href="#">Feed</a></li>
+	    				<li><a href="meuspedidos.php">Meus Pedidos</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+      					<li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Sair</a></li>
+    				</ul>
     			</div>
 
     		</div>

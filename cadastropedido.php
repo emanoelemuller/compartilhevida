@@ -33,11 +33,14 @@
     			</div>
 
     			<div class="collapse navbar-collapse" id="myNavbar">
-    			  <ul class="nav navbar-nav">
-    				<li><a href="index.php">Início</a></li>
-    				<li><a href="#">Cadastrar</a></li>
-    				<li><a href="entra.php">Entrar</a></li>
-    			  </ul>
+    			  	 <ul class="nav navbar-nav">
+	    				<li><a href="user.php">Perfil</a></li>
+	    				<li><a href="feed.php">Feed</a></li>
+	    				<li><a href="meuspedidos.php">Meus Pedidos</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+      					<li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Sair</a></li>
+    				</ul>
     			</div>
 
     		</div>

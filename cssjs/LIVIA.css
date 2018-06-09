@@ -13,7 +13,12 @@ body  h1{
 	}
 body  a{
 	color:#000;
+	text-decoration: none;
 	}
+body a:hover{
+	text-decoration: none;
+	color: white;
+}
 body  a li{
 	color:#000;
 	font-style:bold;
@@ -26,7 +31,7 @@ p{
 .navbar {
 margin-bottom: 0;
       border-radius: 0;
-	  background-color:#DF0005;
+	  background-color:#b6528c;
 	  color:#000;
 	  font-family: 'Ubuntu', sans-serif;
     margin-bottom: 0;
@@ -244,6 +249,12 @@ margin-bottom: 0;
 	vertical-align: inherit;
 }
 
+.ajlink{
+	text-align: right;
+}
+
+
+
 /* TESTEFEED */
 /* TESTEFEED */
 /* TESTEFEED */
@@ -351,8 +362,8 @@ margin-bottom: 0;
 }
 
 .feedBotao{
-	float: left;
 	font-size: 14px;
+	float: right;
 	text-transform: uppercase;
 	color: #000;
 	background-color: #fff;
@@ -426,4 +437,85 @@ margin-bottom: 0;
 
 a {
     text-decoration: none;
+}
+
+.circle {
+  width: 150px;
+  height: 150px;
+  line-height: 150px;
+  border-radius: 50%; /* the magic */
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  text-align: center;
+  color: #fff;
+  font-size: 32px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 2%;
+	float: left;
+}
+
+#vermelho {
+  background-color: #df0005;
+}
+
+#rosa {
+  background-color: #b6528c;
+}
+
+.perfilBorda{
+	border-left: 12px solid #6769c9;
+}
+
+.navbarPurple{
+	background-color: #6769c9;
+}
+
+#perfil{
+	margin-left: 2%;
+}
+
+.infoPerfil{
+	margin-top: 2%;
+	font-size: 18px;
+	font-weight: 400;
+	padding: 0.5%;
+}
+
+#perfilBotao{
+	float: none;
+}
+
+#perfilBotao:hover{
+	border-color: #b6528c;
+	background-color: #b6528c;
+	color: #fff;
+}
+
+#tabela {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    font-size: 14px;
+	text-transform: uppercase;
+    width: 100%;
+}
+
+#tabela tr{
+	padding-bottom: 1%;
+}
+
+#tabela td {
+    padding: 8px;
+}
+
+#tabela th {
+    padding: 0 8px;
+}
+
+#tabela tr:nth-child(even){
+	background-color: #f2f2f2;
+}
+
+#tabela tr:hover {
+	background-color: #ddd;
 }

@@ -6,11 +6,14 @@ session_start();
 
 require_once("ConnectionFactory.php");
 
-$sql = "INSERT INTO atendecria(tipo,fk_codUsuario,fk_codDoacao) VALUES (
+$sql = "INSERT INTO atendecria(tipo,fk_codUsuario,fk_codDoacao,data) VALUES (
 	'2',
 	'" . $_SESSION['codUsuario'] . "',
-	'" . $_POST['codDoa'] . "'	
+	'" . $_POST['codDoa'] . "',
+	CURDATE()
 )";
+
+
 
 try {
 	mysqli_query($conn,$sql);
@@ -20,6 +23,6 @@ try {
 
 mysqli_close($conn);
 
-header("location: feed.php");
+header("location: obrigada.php");
 
 ?>	

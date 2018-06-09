@@ -20,12 +20,9 @@ try {
 		$_SESSION['senhaUsuario'] = $result['senhaUsuario'];
 		$_SESSION['codUsuario'] = $result['codUsuario'];
 		$_SESSION['fk_codSangue'] = $result['fk_codSangue'];		
-		header('location: altcadastro.php');
+		header('location: user.php');
 	} else {
-		echo "
-			Usuario invalido... 
-			<a href='entra.php'>Tente novamente</a>
-		<br>" . mysqli_error($conn);
+		header('location: fail.php') . mysqli_error($conn);
 	}
 } catch (Exception $e) {
 	mysqli_error($conn);

@@ -49,22 +49,13 @@
 
 	<div class="container-fluid text-center">
 	  <div class="row bg branquinho2">
-	    <form method="post" action="entrar.php">
-  		  <div class="form-group">
-  			<label for="email">E-mail:</label>
-  			<input type="text" class="form-control" placeholder="fulanodetal@email.com.br" name="email">
-  		  </div>
-  		  <div class="form-group">
-  			<label for="senha">Senha:</label>
-  			<input type="password" class="form-control" placeholder="*******" name="senha">
-  		  </div>
-  		  <a href=""><button id="btnDoacao" class="banner-button banner-button-animation" type="submit"><span>ENTRA</span></button></a>
-  		  
-      </form>
-        <!-- <a href="cadastro.php"><button id="btnDoacao" class="banner-button banner-button-animation"><span>CADASTRAR</span></button></a><br>
-		
-		  <a href="#">Esqueci a senha</a> -->
-      <a href="cadastro.php">Não possui uma conta? Cadastre-se!</a>
+	    
+      <h2 style="text-transform: uppercase;">Dados cadastrais inválidos!</h2>
+
+      <br>
+
+      <a href="entra.php"><button id="btnDoacao" class="banner-button banner-button-animation"><span>VOLTAR</span></button></a><br>
+
 	  </div>
 
 
