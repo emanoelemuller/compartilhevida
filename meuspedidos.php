@@ -7,7 +7,7 @@
 	$useron = $_SESSION['codUsuario'];
 
 	//Seleciona dados da tabela
-	$sql = ("SELECT * FROM pedido WHERE fk_codUsuario=$useron");
+	$sql = ("SELECT * FROM pedido WHERE fk_codUsuario=$useron ORDER BY ativo ASC");
 	$result = mysqli_query($conn, $sql);
 
 	//Contador de dados na tabela
@@ -73,19 +73,28 @@
 				<?php while($row = $result->fetch_assoc()) :?>
 					<div class="row feedBorda">
 						<div class="col-sm-12 feed">
-						<?php $codDoa = $row['codDoacao']; $sqlacha = ("SELECT * FROM atendecria WHERE (fk_codDoacao='".$codDoa."' and tipo='2')");$resultacha = mysqli_query($conn, $sqlacha); $nrowacha = mysqli_num_rows($resultacha); ?>
+							<?php $codDoa = $row['codDoacao']; $sqlacha = ("SELECT * FROM atendecria WHERE (fk_codDoacao='".$codDoa."' and tipo='2')");$resultacha = mysqli_query($conn, $sqlacha); $nrowacha = mysqli_num_rows($resultacha); ?>
 							<img src="imagens/Hands/PURPLE_Hand.png" class="img-responsive handFeed">
-									<h1><?php echo $row['nomePaciente'] ;?></h1>
-									<p id="feedLetrinha">· Pedido realizado em <b><?php echo $row['dataPedido'] ;?></b><span> · Precisa de <b><?php echo $row['qntDoacao'] ;?></b> Litros</span><span> · para <b><?php echo $row['localPedido'] ;?></b></span></p>
-									<p><?php echo $row['comentario'] ;?></p>
-									<div id="feedSubtitulo" class="entrada">
-									Um total de <b style="color:rgb(102,105,205);"><?php echo $nrowacha; ?><?php ?></b> pessoas atenderam seu pedido.
-									</div>
-									<form method="post" action="removerpedido.php">
-										<input type="hidden" name="codDoa" value=<?php echo $row["codDoacao"]; ?>>
-										<button id="funciona" class="feedBotao" type="submit"><span>ALTERAR STATUS</span></button>
+								<h1><?php echo $row['nomePaciente'] ;?></h1>
+								<p id="feedLetrinha">· Pedido realizado em <b><?php echo $row['dataPedido'] ;?></b><span> · Precisa de <b><?php echo $row['qntDoacao'] ;?></b> Litros</span><span> · para <b><?php echo $row['localPedido'] ;?></b></span></p>
+								<p><?php echo $row['comentario'] ;?></p>
+								<div id="feedSubtitulo" class="entrada">
+								Um total de <b style="color:rgb(102,105,205);"><?php echo $nrowacha; ?><?php ?></b> pessoas atenderam seu pedido.
 
-									</form>
+								<?php if($row['ativo']=='1'):?>
+									<span id="feedLetrinha" style="float: right; color: #8FC908;">ATIVO</span>
+								<?php else:?>
+									<span id="feedLetrinha" style="float: right; color: #F24B21;">INATIVO</span>
+								<?php endif ?>
+
+								</div>
+								<?php if($row['ativo']=='1'):?>
+									<form method="get" action="removerpedido.php">
+									<input type="hidden" name="codDoacao" value=<?php echo intval($row["codDoacao"]); ?>>
+									<button id="funciona" class="feedBotao" type="submit"><span>ALTERAR STATUS</span></button>
+								</form>
+								<?php endif ?>
+								
 									
 						</div>
 					</div>
@@ -93,16 +102,15 @@
 			<?php endif ?>
 
 	  </div>
-	  <!-- rodapé  -->
-	  <div class="row">
-			<div class="col-sm-12 rodape text-center">
-				<img src="imagens/maozinea.png" class="img-responsive">
-				<h1>Compartilhe vida</h1><br>
-				<p>Alguma nota de rodapé que não faço ideia de como escrever</p><br>
-				<p>Compartilhe Vida © 2017 | Diretos Reservados</p>
-			</div>
-	  </div>
-	  <!-- fim rodapé  -->
+    		<!-- rodapé  -->
+    	  <div class="row">
+      		<div class="col-sm-12 rodape text-center">
+      			<img src="imagens/maozinea.png" class="img-responsive">
+      			<h1>Compartilhe vida</h1><br>
+      			<p>Compartilhe Vida © 2017-2018 | Diretos Reservados</p>
+      		</div>
+    	  </div>
+    	  <!-- fim rodapé  -->
 	</div>
    <!-- fim container  -->
 

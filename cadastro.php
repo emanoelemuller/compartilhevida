@@ -99,13 +99,12 @@
 			</div>
 		
 	  </div>
-	  <!-- rodapé  -->
+		<!-- rodapé  -->
 	  <div class="row">
 			<div class="col-sm-12 rodape text-center">
 				<img src="imagens/maozinea.png" class="img-responsive">
 				<h1>Compartilhe vida</h1><br>
-				<p>Alguma nota de rodapé que não faço ideia de como escrever</p><br>
-				<p>Compartilhe Vida © 2017 | Diretos Reservados</p>
+				<p>Compartilhe Vida © 2017-2018 | Diretos Reservados</p>
 			</div>
 	  </div>
 	  <!-- fim rodapé  -->

@@ -86,12 +86,22 @@
 
 				<div class="col-sm-9 infoPerfil">
 					<ul class="">
-						<li><?php echo $res['nome']; ?></a></li>
-						<li><?php echo $res['emailUsuario']; ?></a></li>
-						<li><?php echo $res['telUsuario']; ?></a></li>
+						<li><b>Nome: </b><?php echo $res['nome']; ?></li>
+						<li><b>E-mail: </b><?php echo $res['emailUsuario']; ?></li>
+						<li><b>Telefone: </b><?php echo $res['telUsuario']; ?></li>
+
+						<?php if ($res['ultimaDoacao']<>'0000-00-00')  :?>
+							<li><b>Ultima doação: </b><?php echo $res['ultimaDoacao']; ?></li>
+						<?php else :?>
+							<li><b>Ultima doação: </b>Sem data disponivel</li>
+
+						<?php endif ?>
+						
 					</ul>
 
-					<button id="perfilBotao" class="feedBotao" type=""><span><a href="altcadastro.php"> Editar dados</a></span></button>
+					<!-- <form action=""> -->
+
+					<a href="altcadastro.php"> <button id="perfilBotao" class="feedBotao" type=""><span>Editar dados</span></button></a>
 
 				</div>
 
@@ -130,16 +140,15 @@
 			</div>
 
 	  </div>
-	  <!-- rodapé  -->
-	  <div class="row">
-			<div class="col-sm-12 rodape  text-center">
-				<img src="imagens/maozinea.png" class="img-responsive">
-				<h1>Compartilhe vida</h1><br>
-				<p>Alguma nota de rodapé que não faço ideia de como escrever</p><br>
-				<p>Compartilhe Vida © 2017 | Diretos Reservados</p>
-			</div>
-	  </div>
-	  <!-- fim rodapé  -->
+    		<!-- rodapé  -->
+    	  <div class="row">
+      		<div class="col-sm-12 rodape text-center">
+      			<img src="imagens/maozinea.png" class="img-responsive">
+      			<h1>Compartilhe vida</h1><br>
+      			<p>Compartilhe Vida © 2017-2018 | Diretos Reservados</p>
+      		</div>
+    	  </div>
+    	  <!-- fim rodapé  -->
 	</div>
    <!-- fim container  -->
 

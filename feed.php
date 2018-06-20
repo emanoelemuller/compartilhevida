@@ -10,7 +10,8 @@
 	$pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
 	//Quantidade (limite) de dados por página; numéro arbitrário (por enquanto)
-	$limite = 2;
+	$limite = 3;
+	$contp = 0;
 
 	//Calcula início da vizualização
 	$inicio = ($limite * $pagina) - $limite;
@@ -71,6 +72,18 @@
 	$anterior = $pagina - 1; //atribui valor da página anterior
 	$proxima = $pagina + 1; //atribui valor da página posterio
 
+	$contPedidos = 0;
+
+	if($result->num_rows > 0){
+		while($row = $result->fetch_assoc()){
+			if($row['ativo']=='1'){
+				$contPedidos ++;
+			}
+		}
+	}
+
+	$result = mysqli_query($conn, $sql);
+								
 ?>
 
 <!doctype html>
@@ -129,29 +142,51 @@
 
 			<div id="feedSubtitulo" class="entrada">
 				<!-- Total de resultados (apenas mostra) -->
-				Mostrando <b style="color:#ff2c32"><?php echo "$cont[numPg]" ?><?php ?></b> pedidos pendentes compatíveis com o <b style="color:#ff2c32">seu</b> tipo sanguíneo
+				Mostrando <b style="color:#ff2c32"><?php echo "$contPedidos" ?><?php ?></b> pedidos pendentes compatíveis com o <b style="color:#ff2c32">seu</b> tipo sanguíneo
 			</div>
 
 			<br><br>
 
 
-			<?php if ($result->num_rows > 0) :?>
-				<?php while($row = $result->fetch_assoc()) :?>
-					<div class="row feedBorda">
-						<div class="col-sm-12 feed">
+			<?php if ($result->num_rows > 0 && $contPedidos > 0) :?>
+				<?php while($row = $result->fetch_assoc()) :?>					
+					<?php if($row['ativo']=='1'):?>
+						<div class="row feedBorda">
+							<div class="col-sm-12 feed">
+								
+								<?php $codDoa = $row['codDoacao']; $sqlacha = ("SELECT * FROM atendecria WHERE (fk_codDoacao='".$codDoa."' and tipo='2')");$resultacha = mysqli_query($conn, $sqlacha); $nrowacha = mysqli_num_rows($resultacha); ?>
 
-							<p id="feedCod">#<?php $_SESSION['codDoa'] = $row['codDoacao']; echo $_SESSION['codDoa'] ;?></p>
-							<img src="imagens/Hands/RED_Hand.png" class="img-responsive handFeed">
-									<h1><?php echo $row['nomePaciente'] ;?></h1>
-									<p id="feedLetrinha">· Pedido realizado em <b><?php echo $row['dataPedido'] ;?></b><span> · Precisa de <b><?php echo $row['qntDoacao'] ;?></b> Litros</span><span> · para <b><?php echo $row['localPedido'] ;?></b></span></p>
-									<p><?php echo $row['comentario'] ;?></p>
-									<form method="post" action="atenderpedido.php">
-										<input type="hidden" name="codDoa" value=<?php echo $row["codDoacao"]; ?>>
-										<button id="funciona" class="feedBotao" type="submit"><span>AJUDAR</span></button>
+								<p id="feedCod">#<?php $_SESSION['codDoa'] = $row['codDoacao']; echo $_SESSION['codDoa'] ;?></p>
+								<img src="imagens/Hands/RED_Hand.png" class="img-responsive handFeed">
+										<h1><?php echo $row['nomePaciente'] ;?></h1>
+										<p id="feedLetrinha">· Pedido realizado em <b><?php echo $row['dataPedido'] ;?></b><span> · Precisa de <b><?php echo $row['qntDoacao'] ;?></b> Litros</span><span> · para <b><?php echo $row['localPedido'] ;?></b></span><span> · um total de <b><?php echo $nrowacha; ?></b> atenderam ao pedido</span></p>
+										<p><?php echo $row['comentario'] ;?></p>
 
-									</form>
+									
+
+								<?php if($contp<$limite):?>
+									<button id=<?php echo "btnAtP"; echo $contp; ?> class="feedBotao"  align="center"><span>AJUDAR</span></button>
+									<div id=<?php echo "aparece"; echo $contp; ?>>
+										 <form method="post" action="obrigada.php">
+											<input type="hidden" name="codDoa" value=<?php echo $row["codDoacao"]; ?>>
+											<p>Data que pretende efetivar o pedido:</p>
+											<input type="date" name="dataefe" required><br>
+											<button id="funciona" class="feedBotao" type="submit"><span>CONFIRMAR</span></button>
+										</form> 
+									</div>
+									<script type="text/javascript">
+									  	$(<?php echo "'#aparece"; echo $contp; echo "'";?>).hide();
+									  	$(<?php echo "'#btnAtP"; echo $contp; echo "'";?>).click(function(){
+									  		$(<?php echo "'#btnAtP"; echo $contp; echo "'";?>).hide();  
+											$(<?php echo "'#aparece"; echo $contp; echo "'";?>).fadeIn(1000);
+										});
+									  </script> <!-- importa js -->
+									<?php $contp ++ ;?>
+								<?php endif ?>
+							</div>
 						</div>
-					</div>
+					<?php endif ?>
+
 				<?php endwhile ?>
 			<?php endif ?>
 
@@ -198,17 +233,19 @@
 			<!--TESTEFEED-->
 
 	  </div>
-	  <!-- rodapé  -->
-	  <div class="row">
-			<div class="col-sm-12 rodape text-center">
-				<a href="cadastropedido.php"><input class='botaoCadastro' type='button' value='Criar pedido'></a>
-				<img src="imagens/maozinea.png" class="img-responsive">
-				<h1>Compartilhe vida</h1><br>
-				<p>Alguma nota de rodapé que não faço ideia de como escrever</p><br>
-				<p>Compartilhe Vida © 2017 | Diretos Reservados</p>
-			</div>
-	  </div>
-	  <!-- fim rodapé  -->
+    		<!-- rodapé  -->
+    	  <div class="row">
+    	  <a href="cadastropedido.php"><input class='botaoCadastro' type='button' value='Criar pedido'></a>
+      		<div class="col-sm-12 rodape text-center">
+      			<img src="imagens/maozinea.png" class="img-responsive">
+      			<h1>Compartilhe vida</h1><br>
+      			<p>Compartilhe Vida © 2017-2018 | Diretos Reservados</p>
+      		</div>
+    	  </div>
+    	  <!-- fim rodapé  -->
+
+	  
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	</div>
    <!-- fim container  -->
 

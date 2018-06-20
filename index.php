@@ -118,7 +118,7 @@
     			<div class="col-sm-12">
       			<h1 class="az">Onde doar</h1>
       			<center><script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:440px;width:100%;'><div id='gmap_canvas' style='height:440px;width:100%;'></div><div><small><a href="http://embedgooglemaps.com">https://embedgooglemaps.com/pt/</a></small></div><div><small><a href="http://notariskosten.nu/hoeverre-verschillen-notariskosten-hoogte/">Go here</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:6,center:new google.maps.LatLng(-19.1834229,-40.3088626),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(-19.1834229,-40.3088626)});infowindow = new google.maps.InfoWindow({content:'<strong>Teste</strong><br>Esp�rito Santo, Brasil<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script></center>
-				<center><button class="banner-button banner-button-animation"><span><a href="entra.php">QUERO AJUDAR</a></span></button></center>
+				<center><a href="cadastro.php"><button class="banner-button banner-button-animation"><span>QUERO AJUDAR</span></button></a></center>
 				<center><a href="#info"><button id="btnFecha" class="banner-button banner-button-animation"><span>VOLTAR</span></button></a></center> 
     		  </div>
 			  
@@ -132,6 +132,22 @@
     				<h1>Plataforma</h1>
     				<p>O projeto “Compartilhe Vida”, desenvolvido pelos estudantes do curso técnico de Informática no Instituto Federal do Espírito Santo (IFES), consiste em um site desenvolvido com o intuito de dinamizar o processo da doação no que tange o processo de conhecimento sobre a doação (que é vago e descentralizado na maioria das vezes, contendo muitos mitos) e a organização, evitando também as correntes nas redes sociais como Facebook, WhatsApp, Twitter, entre outras. Para isso, desenvolvemos uma plataforma que centraliza essas informações e ainda disponibiliza um feed de pedidos de doações integrado entre os usuários (tendo como filtro automático o seu tipo sanguíneo) a fim de favorecer a procura e também a resposta de doadores.
     				</p>
+            <h1>Fale Conosco</h1>
+           <form name="formContato" method="post" action="#">
+            <label for="nome" id="labelFormContato" >Nome:</label>
+            <input type="text" name="tfNome"  id="nome" maxlength="60" class="form-control input-sm" /><br clear="all" />
+            <label for="email" id="labelFormContato">E-mail:</label>
+            <input type="text" name="tfEmail"  id="email" maxlength="60" class="form-control input-sm" /><br clear="all" />
+              <label for="assunto" id="labelFormContato">Assunto:</label>
+            <input type="text" name="tfAssunto"  id="assunto" maxlength="60" class="form-control input-sm" /><br clear="all" />
+              <label for="mensagem" id="labelFormContato">Mensagem:</label>
+            <textarea name="mensagem" cols="20" rows="5"  id="mensagem" class="form-control input-sm"></textarea><br clear="all" />
+
+              <button type="submit" name="ok" id="ok" class="enviaBotao"><span>ENVIAR</span></button>   
+
+          </form>
+          </div>
+          <div class="col-sm-12">
 					<center><a href="#info"><button id="btnFecha2" class="banner-button banner-button-animation"><span>VOLTAR</span></button></a></center>
     			</div>
     		</div>
@@ -141,8 +157,7 @@
       		<div class="col-sm-12 rodape text-center">
       			<img src="imagens/maozinea.png" class="img-responsive">
       			<h1>Compartilhe vida</h1><br>
-      			<p>Alguma nota de rodapé que não faço ideia de como escrever</p><br>
-      			<p>Compartilhe Vida © 2017 | Diretos Reservados</p>
+      			<p>Compartilhe Vida © 2017-2018 | Diretos Reservados</p>
       		</div>
     	  </div>
     	  <!-- fim rodapé  -->

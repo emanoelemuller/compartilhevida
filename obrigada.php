@@ -1,4 +1,40 @@
-<?php require_once("ConnectionFactory.php"); ?>
+<?php 
+
+session_start(); 
+require_once("ConnectionFactory.php");
+
+//Atende pedido
+$r = 0;
+
+while($r < 1){
+
+    $sql = "INSERT INTO atendecria(tipo,fk_codUsuario,fk_codDoacao,data) VALUES (
+      '2',
+      '" . $_SESSION['codUsuario'] . "',
+      '" . $_POST['codDoa'] . "',
+      CURDATE()
+      )";
+
+    $sqlus = "UPDATE usuario SET ultimaDoacao='" . $_POST['dataefe'] . "' WHERE codUsuario = '".$_SESSION['codUsuario']."'";
+
+    try {
+      mysqli_query($conn,$sql);
+      mysqli_query($conn,$sqlus);
+    } catch (Exception $e) {
+      mysqli_error($conn);
+    }
+
+  $r++;
+}
+
+//Código do pedido
+$codigo = $_POST['codDoa'];
+
+//Informações
+$sql = "SELECT FROM pedido WHERE codDoacao=codigo";
+$result = mysqli_query($conn, $sql);
+
+?>
 
 
 <!doctype html>
@@ -26,19 +62,18 @@
     <div class="row bg branquinho2"> 
       <br><br>
       <h1>Obrigada por ajudar!</h1>
-      <a href="user.php">Seu perfil</a>
+      <a href="user.php">Seu perfil</a> 
       <br><br><br><br><br><br>
     </div>
-    		<!-- rodapé  -->
-    	  <div class="row">
-      		<div class="col-sm-12 rodape text-center ajrodape">
-      			<img src="imagens/maozinea.png" class="img-responsive">
-      			<h1>Compartilhe vida</h1><br>
-      			<p>Alguma nota de rodapé que não faço ideia de como escrever</p><br>
-      			<p>Compartilhe Vida © 2017 | Diretos Reservados</p>
-      		</div>
-    	  </div>
-    	  <!-- fim rodapé  -->
+        <!-- rodapé  -->
+        <div class="row">
+          <div class="col-sm-12 rodape text-center">
+            <img src="imagens/maozinea.png" class="img-responsive">
+            <h1>Compartilhe vida</h1><br>
+            <p>Compartilhe Vida © 2017-2018 | Diretos Reservados</p>
+          </div>
+        </div>
+        <!-- fim rodapé  -->
 
       </div> <!-- fim corpo -->
 

@@ -68,14 +68,14 @@ $sql = ("SELECT * FROM usuario WHERE (codUsuario='".$_SESSION['codUsuario']."')"
 
 				<div>
 					<label for="datan">Data de Nascimento:</label>
-					<input class="form-control input-sm" id="datan" type="date" name="datan" value="<?php echo $res['dataNasc'] ?>"required>
+					<input class="form-control input-sm" id="datan" type="date" name="datan" value="<?php echo $res['dataNasc'] ?>" required>
 				</div>
 
 				<label for="cel">Celular:</label>
 				<input type="text" class="form-control" id="cel" placeholder="(27) 99999-9999" name="cel"value="<?php echo $res['telUsuario'] ?>">
 
 				<label for="email">E-mail:</label>
-				<input type="text" class="form-control" id="email" placeholder="fulanodetal@email.com.br" name="email" value="<?php echo $res['emailUsuario'] ?>"required>
+				<input type="text" class="form-control" id="email" placeholder="fulanodetal@email.com.br" name="email" value="<?php echo $res['emailUsuario'] ?>" required>
 
 				<label for="senha">Senha antiga:</label>
 				<input type="password" class="form-control" id="senha" placeholder="senha" name="senha" required>

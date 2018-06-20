@@ -1,11 +1,13 @@
 <?php
 
+/* cadastra usuário e emite erros caso campus estejam vazios os incorretos */
+
 require_once("ConnectionFactory.php");
 
 $erro = false;
 
 if ( ( ! isset( $_POST['email'] ) || ! filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL ) ) && !$erro ) {
-	$erro = 'Envie um email válido.';
+	$erro = 'Insira um email válido.';
 }
 
 if($_POST['senha']<>$_POST['csenha']){

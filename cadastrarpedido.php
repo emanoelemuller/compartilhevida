@@ -1,10 +1,12 @@
 <?php
 
+/* cadastra pedidos */ 
+
 session_start(); 
 
 require_once("ConnectionFactory.php");
 
-$sql = "INSERT INTO pedido(comentario,qntDoacao,dataPedido,nomePaciente,causaPedido,localPedido,fk_codUsuario,fk_codSangue) VALUES (
+$sql = "INSERT INTO pedido(comentario,qntDoacao,dataPedido,nomePaciente,causaPedido,localPedido,fk_codUsuario,fk_codSangue,ativo) VALUES (
 	'" . $_POST['comen'] . "',
 	'" . $_POST['qntdoa'] . "',
 	CURDATE() ,
@@ -12,7 +14,8 @@ $sql = "INSERT INTO pedido(comentario,qntDoacao,dataPedido,nomePaciente,causaPed
 	'" . $_POST['causa'] . "',
 	'" . $_POST['localdoa'] . "',
 	'" . $_SESSION['codUsuario'] . "',
-	'" . $_POST['tipos'] . "'
+	'" . $_POST['tipos'] . "',
+	'1'
 	
 )";
 

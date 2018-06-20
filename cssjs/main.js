@@ -47,3 +47,4 @@ $("#plat").hide();
 		$("#plat").hide();
 		$('.navbar').css("background-color", "#DF0005")
 	});
+

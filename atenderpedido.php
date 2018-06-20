@@ -13,10 +13,13 @@ $sql = "INSERT INTO atendecria(tipo,fk_codUsuario,fk_codDoacao,data) VALUES (
 	CURDATE()
 )";
 
+$sqlus = "UPDATE usuario SET ultimaDoacao='" . $_POST['dataefe'] . "' WHERE codUsuario = '".$_SESSION['codUsuario']."'";
+
 
 
 try {
 	mysqli_query($conn,$sql);
+	mysqli_query($conn,$sqlus);
 } catch (Exception $e) {
 	mysqli_error($conn);
 }

@@ -1,25 +1,19 @@
 <?php
 
+/*atualiza a tabela de cadastra alterando os dados do usuário*/
+
 session_start();
 
 require_once("ConnectionFactory.php");
 
 $erro = false;
-// $erro é verdadeiro ou falso
-// $error é a variavel que vai receber a mensagem do erro
-// uma mesma variavel nao pode ter valores diferentes assim
-// nao pro que voce faz ali no if($erro)
-
-// e no $sql estava faltando o ponto e virgula, nao sei 
-
-// testei e funcionou, mas qualquer coisa me avisa, beijo na bunda
 
 if ( ( ! isset( $_POST['email'] ) || ! filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL ) ) && !$erro ) {
-	$error = 'Envie um email válido.';
+	$error = 'Insira um email válido.';
 }
 
 if(sha1($_POST['senha'])<>$_POST['asenha']){
-	$error = 'Senha antiga invalida.';
+	$error = 'Senha antiga inválida.';
 }
 
 if ( $erro ) {
